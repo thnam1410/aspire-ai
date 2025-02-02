@@ -20,9 +20,9 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 
 public record WeatherForecastQuery : IRequest<IEnumerable<WeatherForecast>>;
 
-internal class ItemTypesQueryValidator : AbstractValidator<WeatherForecastQuery>{}
+internal class GetWeatherForecastQueryValidator : AbstractValidator<WeatherForecastQuery>{}
 
-internal class ItemTypesQueryHandler() : IRequestHandler<WeatherForecastQuery, IEnumerable<WeatherForecast>>
+internal class GetWeatherForecastQueryHandler() : IRequestHandler<WeatherForecastQuery, IEnumerable<WeatherForecast>>
 {
     public Task<IEnumerable<WeatherForecast>> Handle(WeatherForecastQuery request, CancellationToken cancellationToken)
     {

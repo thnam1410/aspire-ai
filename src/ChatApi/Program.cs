@@ -1,3 +1,4 @@
+using ChatApi.Services.ChatCompletion;
 using ServiceDefaults;
 using Shared.Endpoint;
 
@@ -16,6 +17,10 @@ builder.Services.AddMediatR(cfg => {
     // cfg.AddOpenBehavior(typeof(HandlerBehavior<,>));
 });
 
+//Validation related
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+//Endpoints related
 builder.Services.AddApiVersioning(options =>
 {
     options.DefaultApiVersion = new ApiVersion(1);
@@ -28,9 +33,17 @@ builder.Services.AddApiVersioning(options =>
 
 builder.Services.AddEndpoints(typeof(Program).Assembly);
 
+//Metrics related
 // builder.Services.AddSingleton<IActivityScope, ActivityScope>();
 // builder.Services.AddSingleton<CommandHandlerMetrics>();
 // builder.Services.AddSingleton<QueryHandlerMetrics>();
+
+//AI Related
+builder.AddChatCompletionService();
+
+//Log related
+builder.Host.UseSerilog((context, configuration) => 
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();
 

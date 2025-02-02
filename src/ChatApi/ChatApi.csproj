@@ -5,11 +5,19 @@
         <PackageReference Include="FluentValidation.AspNetCore"/>
         <PackageReference Include="MediatR"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+        <PackageReference Include="Microsoft.Extensions.AI" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.AspNetCore" />
         <PackageReference Include="Swashbuckle.AspNetCore"/>
+        <PackageReference Include="Microsoft.Extensions.AI.Ollama" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Shared\Shared.csproj" />
       <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Configs\" />
     </ItemGroup>
 </Project>
